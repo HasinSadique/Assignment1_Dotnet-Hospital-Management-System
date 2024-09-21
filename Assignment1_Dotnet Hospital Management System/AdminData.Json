@@ -1,0 +1,44 @@
+[
+  {
+    "ID": 101,
+    "Name": "Alice",
+    "Email": "admin@example.com",
+    "Password": "admin",
+    "UserType": "Admin"
+  },
+  {
+    "ID": 1000004,
+    "Name": "Eve",
+    "Email": "eve_admin@example.com",
+    "Password": "evepass123",
+    "UserType": "Admin"
+  },
+  {
+    "ID": 1000005,
+    "Name": "Frank",
+    "Email": "frank_admin@example.com",
+    "Password": "frankpass123",
+    "UserType": "Admin"
+  },
+  {
+    "ID": 1000006,
+    "Name": "Grace",
+    "Email": "grace_admin@example.com",
+    "Password": "gracepass123",
+    "UserType": "Admin"
+  },
+  {
+    "ID": 1000007,
+    "Name": "Hank",
+    "Email": "hank_admin@example.com",
+    "Password": "hankpass123",
+    "UserType": "Admin"
+  },
+  {
+    "ID": 1000008,
+    "Name": "Ivy",
+    "Email": "ivy_admin@example.com",
+    "Password": "ivypass123",
+    "UserType": "Admin"
+  }
+]
