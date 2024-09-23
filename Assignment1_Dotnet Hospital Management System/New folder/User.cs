@@ -16,10 +16,7 @@ public abstract class User
     public string Address { get; set; }
     [JsonPropertyName("Phone")]
     public string Phone { get; set; }
-    [JsonPropertyName("RegisteredWith")]
-    public int [] RegisteredWith { get; set; }
-
-
+    
 
 
     public User() {}

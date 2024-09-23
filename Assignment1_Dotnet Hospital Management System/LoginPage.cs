@@ -58,7 +58,7 @@ public class LoginPage
         {
             //throw new Exception();
             //Console.Clear();
-            Console.WriteLine("Invalid input. press any key to try again!!\n");
+            Console.WriteLine($"Invalid input. press any key to try again!!\n {e}");
             Console.ReadKey();
             Console.Clear();
 
@@ -77,12 +77,7 @@ public class LoginPage
                 if (Current_UserType == null)
                 {
                     Console.Clear();
-                    //Header h1 = new Header("Login Page");
-
-
                 }
-
-                //Admin A1 = new Admin(u1.ID,u1.Name,u1.Email,u1.UserType,u1.Password);
             }
             else if (userType == "Doctor")
             {
@@ -91,14 +86,20 @@ public class LoginPage
                 if (Current_UserType == null)
                 {
                     Console.Clear();
-                    //Header h1 = new Header("Login Page");
-
-
                 }
             }
             else if (userType == "Patient")
             {
                 u1 = DataManager.ValidateUser("Patient", uid, pass);
+                Current_UserType = u1?.UserType;
+                if (Current_UserType == null)
+                {
+                    Console.Clear();
+                    //Header h1 = new Header("Login Page");
+                }
+            } else if (userType=="Receptionist") 
+            {
+                u1 = DataManager.ValidateUser("Receptionist", uid, pass);
                 Current_UserType = u1?.UserType;
                 if (Current_UserType == null)
                 {
@@ -112,20 +113,7 @@ public class LoginPage
                 Console.ReadKey();
             }
         } while (u1==null);
-        Console.WriteLine("<<< User >>>> : " + u1);
         u1?.MainMenu();
-        //else if (userType == "Doctor") {
-        //    //Load Doctor Data
-        //    Console.WriteLine("Doctor selected");
-        //} else if ( userType=="Patient") 
-        //{
-        //    Console.WriteLine("Patient selected");
-        //}
-        //else {
-        //    Console.WriteLine("Receptionist selected");
-        //}
-
-        //bool ish=checkLoginInfo(AdminDataJson, email, pass);
 
     }
 

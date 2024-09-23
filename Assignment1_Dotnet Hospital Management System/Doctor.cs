@@ -2,36 +2,35 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace Assignment1_Dotnet_Hospital_Management_System
 {
     public class Doctor : User
     {
-        public int ID { get; set; }
-        public string Name { get; set; }
-        public string Email { get; set; }
-        public string Address { get; set; }
-        public string Phone { get; set; }
-        public string Password { get; set; }
 
 
-        public Doctor() { }
-        public Doctor(int id, string fullName, string email, string phone, string address, string password)
+        public Doctor()
+        {
+            UserType = "Doctor";
+        }
+            public Doctor(int id, string fullName, string email, string phone, string address, string password)
         {
             this.ID = id;
             this.Name = fullName;
             this.Email = email;
             this.Phone = phone;
+            UserType = "Doctor";
             this.Address = address;
             this.Password = password;
+
         }
 
         public override void MainMenu()
         {
             while (true) {
                 Console.Clear();
-                Console.WriteLine("<<< User >>>> : ");
                 Header h1 = new Header("Doctor Home");
                 Console.WriteLine("Doctor Menu");
                 Console.WriteLine(" 1. List Doctor Details");
@@ -47,7 +46,6 @@ namespace Assignment1_Dotnet_Hospital_Management_System
                 {
                     case "1":
                         myDetails();
-
                         break;
                     case "2":
                         //ListAllPatients();
@@ -65,9 +63,8 @@ namespace Assignment1_Dotnet_Hospital_Management_System
                         Logout();
                         break;
                     case "7":
-
-                        //Exit();
-                        break;// Logout
+                        Exit();
+                        break;
                     default:
                         Console.WriteLine("Invalid option. Please try again.");
                         break;
@@ -76,12 +73,14 @@ namespace Assignment1_Dotnet_Hospital_Management_System
             }
         }
 
-        private void myDetails()
-        {
-            DataManager.LoadData("Doctor");
+        //private void myDetails()
+        //{
+        //    Console.Clear();
+        //    Header h1 = new Header("My Details");
+        //    Console.WriteLine("");
+        //    DisplayUserInTable(DataManager.curentUser);
 
-
-        }
+        //}
 
         public override string ToString()
         {
