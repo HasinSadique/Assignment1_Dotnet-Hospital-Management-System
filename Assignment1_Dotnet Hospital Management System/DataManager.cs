@@ -31,9 +31,6 @@ public class DataManager
     public static List<Appointment> AppointmentList { get; set; }=new List<Appointment>();
 
 
-    //public static string fileContent;
-
-    //public static Doctor testDoc { get; set; } = new Doctor();
 
     public static List<Appointment> GetFullAppointmentList() {
 
@@ -195,6 +192,7 @@ public class DataManager
         return null;
     }
 
+    //CancellationToken delete if ref 0
     public static List<Doctor> getDoctorList(int iD)
     {
         LoadData();
@@ -207,23 +205,42 @@ public class DataManager
 
         return JsonSerializer.Deserialize<List<Doctor>>(DoctorJsonData); ;
     }
-    //Funtion to register with a doctor
+    //Function to register with a doctor
     public static void RegisterMeWith(int id)
     {
         LoadData();
+
+
         if (curentUser.UserType == "Patient" && !curentUser.RegisteredWith.Contains(id))
         {
+//Add patient ID to doctor's registered patients.
             foreach (Patient p in Patients)
             {
                 if (p.ID == curentUser.ID)
                 {
+//Convert the Int array to List
                     List<int> registeredWith = new List<int>(p.RegisteredWith);
-                    if (registeredWith.Contains(id))
+                    if (registeredWith.Contains(id)) //Checks of data already existing. 
                     {
                         break;
                     }
                     registeredWith.Add(id);
                     p.RegisteredWith = registeredWith.ToArray();
+//Add patient ID to doctor's registered patients.
+                    foreach(Doctor d in Doctors) {
+                        if (d.ID == id) {
+            //Convert the Int array to List
+                            List<int> DoctorRegisteredWith = new List<int>(d.RegisteredWith);
+                            if (DoctorRegisteredWith.Contains(curentUser.ID)) //Checks of patient ID already existing. 
+                            {
+                                break;
+                            }
+                            DoctorRegisteredWith.Add(curentUser.ID);
+                            d.RegisteredWith = DoctorRegisteredWith.ToArray();
+                            curentUser.RegisteredWith=p.RegisteredWith.ToArray();
+                            break;
+                        }
+                    }
                     break;
                 }
             }
@@ -231,10 +248,14 @@ public class DataManager
             {
                 WriteIndented = true
             };
-            string jsonString = JsonSerializer.Serialize(Patients, options);
-            File.WriteAllText(projectRoot + "\\PatientData.JSON", jsonString);
+//Writing patient's new reggistered data to file
+            string PatientJsonString = JsonSerializer.Serialize(Patients, options);
+            File.WriteAllText(projectRoot + "\\PatientData.JSON", PatientJsonString);
+//Writing patient's new reggistered data to file
+            string DoctorJsonString = JsonSerializer.Serialize(Doctors, options);
+            File.WriteAllText(projectRoot + "\\DoctorData.JSON", DoctorJsonString);
 
-
+            reloadData();
         }
         else { 
         
@@ -261,17 +282,62 @@ public class DataManager
         //}
 
     }
-    //Checks for correct ID and 
-    public static bool CheckID(string userType, int myDocID)
+    //Checks for correct ID and returns bool value
+    public static bool CheckID(string userType, int myID)
     {
         reloadData();
 
-        if (userType == "Doctor") { 
-            foreach (Doctor d in Doctors) {
-            if (d.ID == myDocID)
-                return true;
+        if (userType == "Doctor")
+        {
+            foreach (Doctor d in Doctors)
+            {
+                if (d.ID == myID)
+                    return true;
+            }
+        }
+        else if (userType == "Patient") {
+            foreach (Patient p in Patients) {
+                if (p.ID == myID) {
+                    return true;
+                }
             }
         }
         return false;
+    }
+    public static Patient getPatientInfo(int PID) //return the patient info/object
+    {
+        foreach (Patient p in Patients)
+        {
+
+            if (PID == p.ID)
+            {
+                return p;
+            }
+        }
+        return null;
+    }
+
+    public static void SaveAppointment(List<Appointment> appointments)
+    {
+        var options = new JsonSerializerOptions
+        {
+            WriteIndented = true
+        };
+        string jsonString = JsonSerializer.Serialize(appointments, options);
+        File.WriteAllText(projectRoot + "\\AppointmentData.JSON", jsonString);
+        Console.WriteLine($"\nAppointment booked successfully.\nPress any key to go back to main menu.");
+
+    }
+
+    public static List<Appointment> GetAppointmentInfo(int id)
+    {
+        List<Appointment> AppointmentList = GetFullAppointmentList();
+        List<Appointment> AppointmentShortList = new List<Appointment>(); ;
+        foreach (Appointment a in AppointmentList) {
+            if (a.P_ID == id) {
+                AppointmentShortList.Add(a);
+            }
+        }
+        return AppointmentShortList;       
     }
 }

@@ -24,7 +24,7 @@ public class LoginPage
     {
         Header h1 = new Header("Login Page");
         Console.WriteLine("Menu:");
-        Console.WriteLine("1. Login as Admin\n2. Login as Doctor\n3. Login as Patient\n4. Login as Receptionist\n\nEnter login option:");
+        Console.WriteLine("1. Login as Admin\n2. Login as Doctor\n3. Login as Patient\n4. Login as Receptionist\n5. Exit System \n\nEnter login option:");
         try
         {
             string option = Console.ReadLine();
@@ -39,16 +39,18 @@ public class LoginPage
             }
             else if (option == "2")
             {
-                 createLoginPage("Doctor");
+                createLoginPage("Doctor");
             }
             else if (option == "3")
             {
-                 createLoginPage("Patient");
+                createLoginPage("Patient");
             }
             else if (option == "4")
             {
-               createLoginPage("Receptionist");
+                createLoginPage("Receptionist");
             }
+            else if (option == "5")
+                Environment.Exit(0);
             else
             {
                 Console.WriteLine("Invalid entry.\n\n");
@@ -68,7 +70,9 @@ public class LoginPage
     {
         do
         {
-            LoginForm();
+
+           
+            LoginForm(userType);
 
             if (userType == "Admin")
             {
@@ -95,7 +99,6 @@ public class LoginPage
                 if (Current_UserType == null)
                 {
                     Console.Clear();
-                    //Header h1 = new Header("Login Page");
                 }
             } else if (userType=="Receptionist") 
             {
@@ -118,10 +121,12 @@ public class LoginPage
     }
 
 
-    public void LoginForm()
+    public void LoginForm(String userType)
     {
 
         Header h1 = new Header("Login Page");
+        Console.WriteLine($"Logging as {userType}\n");
+
         Console.WriteLine("Enter your ID");
         uid = int.Parse(Console.ReadLine());
         Console.WriteLine("Enter Password");

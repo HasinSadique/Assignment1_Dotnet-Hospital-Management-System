@@ -96,14 +96,14 @@ public class Admin : User
     {
         //creates table for displaying doctors
         Console.WriteLine($"{"ID",-10} | {"Name",-20} | {"Email",-25} | {"Phone",-20} | {"Address",-45} |");
-        for (int i = 0; i < 134; i++)
+        for (int i = 0; i < 137; i++)
         {
             Console.Write("-");
         }
         Console.WriteLine("");
         //-----------------------------------------------------------------------------------------------------
         Console.WriteLine(user.ToString());
-        for (int i = 0; i < 134; i++)
+        for (int i = 0; i < 137; i++)
         {
             Console.Write("-");
         }
