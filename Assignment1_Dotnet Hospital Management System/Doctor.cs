@@ -108,8 +108,8 @@ namespace Assignment1_Dotnet_Hospital_Management_System
             if (p != null)
             {
                 //Show in table
-                Console.WriteLine($"\n{"Patient ID",-10} | {"Patient Name",-20}  | {"Email",-25} | {"Phone",-20} | {"Address",-45} |");
-                for (int i = 0; i < 137; i++)
+                Console.WriteLine($"\n{"Patient ID",-10} | {"Patient Name",-20}  | {"Email",-25} | {"Phone",-20} | {"Address",-60}");
+                for (int i = 0; i < 142; i++)
                 {
                     Console.Write("-");
                 }
@@ -119,7 +119,7 @@ namespace Assignment1_Dotnet_Hospital_Management_System
                 Console.WriteLine(DataManager.getPatientInfo(PID).ToString());
                 //---------------------Data above--------------------------------------------------------------------------------
 
-                for (int i = 0; i < 137; i++)
+                for (int i = 0; i < 142; i++)
                 {
                     Console.Write("-");
                 }
@@ -143,8 +143,8 @@ namespace Assignment1_Dotnet_Hospital_Management_System
                 Console.Clear();
                 Header h1 = new Header("Doctor Home");
                 Console.WriteLine("\nMy registered patients.\n");
-                Console.WriteLine($"\n{"Patient ID",-10} | {"Patient Name",-20} | {"Email",-25} | {"Phone",-20} | {"Address",-45} ");
-                for (int i = 0; i < 134; i++)
+                Console.WriteLine($"\n{"Patient ID",-10} | {"Patient Name",-20} | {"Email",-25} | {"Phone",-20} | {"Address",-60} ");
+                for (int i = 0; i < 149; i++)
                 {
                     Console.Write("-");
                 }
@@ -158,7 +158,7 @@ namespace Assignment1_Dotnet_Hospital_Management_System
                 }
                 //---------------------Data above--------------------------------------------------------------------------------
 
-                for (int i = 0; i < 134; i++)
+                for (int i = 0; i < 149; i++)
                 {
                     Console.Write("-");
                 }
@@ -176,7 +176,7 @@ namespace Assignment1_Dotnet_Hospital_Management_System
         
         //Show data in table.
         public void ShowinTable(List<Appointment> myAppointments) {
-            Console.WriteLine($"\n{"Appointment ID",-15} | {"Patient Name",-20} | {"Doctor Name",-20} | {"Description",-60} |");
+            Console.WriteLine($"\n{"Appointment ID",-15} | {"Patient Name",-20} | {"Doctor Name",-20} | {"Description",-60}");
             for (int i = 0; i < 125; i++)
             {
                 Console.Write("-");
@@ -204,7 +204,7 @@ namespace Assignment1_Dotnet_Hospital_Management_System
         }
         public override string ToString()
         {
-            return $"{ID,-10} | {Name,-20} | {Email,-25} | {Phone,-20} | {Address,-45} |";
+            return $"{ID,-10} | {Name,-20} | {Email,-25} | {Phone,-20} | {Address,-60}";
         }
     }
 

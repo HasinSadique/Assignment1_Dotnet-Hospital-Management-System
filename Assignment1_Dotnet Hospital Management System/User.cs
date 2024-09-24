@@ -44,21 +44,21 @@ public abstract class User
     {
         //return $"{ID,-10},{Name},{Email},{Password},{Address},{Phone},{UserType}";
 
-        return $"{ID,-10} | {Name,-20} | {Email,-25} | {Phone,-20} | {Address,-45} ";
+        return $"{ID,-10} | {Name,-20} | {Email,-25} | {Phone,-20} | {Address,-60} ";
     }
 
     public static void DisplayUserInTable(User user)
     {
         //creates table for displaying doctors
-        Console.WriteLine($"{"ID",-10} | {"Name",-20} | {"Email",-25} | {"Phone",-20} | {"Address",-45} |");
-        for (int i = 0; i < 134; i++)
+        Console.WriteLine($"{"ID",-10} | {"Name",-20} | {"Email",-25} | {"Phone",-20} | {"Address",-60}");
+        for (int i = 0; i < 149; i++)
         {
             Console.Write("-");
         }
         Console.WriteLine("");
         //-----------------------------------------------------------------------------------------------------
         Console.WriteLine(user.ToString());
-        for (int i = 0; i < 134; i++)
+        for (int i = 0; i < 149; i++)
         {
             Console.Write("-");
         }

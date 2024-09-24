@@ -52,8 +52,8 @@ namespace Assignment1_Dotnet_Hospital_Management_System
             List<Appointment> appointments = DataManager.GetFullAppointmentList();
             Console.Clear();
             Header h1 = new Header("Receptionist Home");
-            Console.WriteLine($"\n{"Appointment ID",-15} | {"Patient ID",-10} | {"Doctor ID",-10} | {"Patient Name",-20} | {"Doctor Name",-15} | {"Description",-60} ");
-            for (int i = 0; i < 150; i++)
+            Console.WriteLine($"\n{"Appointment ID",-15} | {"Patient Name",-20} | {"Doctor Name",-15} | {"Description",-60} ");
+            for (int i = 0; i < 120; i++)
             {
                 Console.Write("-");
             }
@@ -65,7 +65,7 @@ namespace Assignment1_Dotnet_Hospital_Management_System
                 Console.WriteLine(appointment.ToString());
             }
             //*************************************************
-            for (int i = 0; i < 150; i++)
+            for (int i = 0; i < 120; i++)
             {
                 Console.Write("-");
             }

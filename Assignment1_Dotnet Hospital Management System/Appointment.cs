@@ -30,7 +30,7 @@ namespace Assignment1_Dotnet_Hospital_Management_System
         public Appointment() { }
         public string ToString()
         {
-            return $"{A_ID,-15} | {Patient_Name,-20} | {Doctor_Name,-20} | {Description,-60} |";
+            return $"{A_ID,-15} | {Patient_Name,-20} | {Doctor_Name,-20} | {Description,-60}";
         }
     }
 }

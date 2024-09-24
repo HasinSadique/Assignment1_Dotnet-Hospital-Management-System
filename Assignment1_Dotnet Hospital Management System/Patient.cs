@@ -142,7 +142,7 @@ namespace Assignment1_Dotnet_Hospital_Management_System
             
             List<Appointment> myAppointments = DataManager.GetFullAppointmentList();
 
-            Console.WriteLine($"{"Appointment ID",-15} | {"Patient Name",-20} | {"Doctor Name",-20} | {"Description",-60} |");
+            Console.WriteLine($"{"Appointment ID",-15} | {"Patient Name",-20} | {"Doctor Name",-20} | {"Description",-60}");
             for (int i = 0; i < 125; i++)
             {
                 Console.Write("-");
@@ -167,8 +167,8 @@ namespace Assignment1_Dotnet_Hospital_Management_System
 
         private void ShowDocTable(List<Doctor> DocList) {
 
-            Console.WriteLine($"\n{"Doctor ID",-10} | {"Doctor Name",-20} | {"Email",-25} | {"Phone",-20} | {"Address",-45} |");
-            for (int i = 0; i < 133; i++)
+            Console.WriteLine($"\n{"Doctor ID",-10} | {"Doctor Name",-20} | {"Email",-25} | {"Phone",-20} | {"Address",-60}");
+            for (int i = 0; i < 148; i++)
             {
                 Console.Write("-");
             }
@@ -179,7 +179,7 @@ namespace Assignment1_Dotnet_Hospital_Management_System
                 Console.WriteLine(d.ToString());
             }
             //-----------------------------Data above------------------------------------------------------------------------
-            for (int i = 0; i < 133; i++)
+            for (int i = 0; i < 148; i++)
             {
                 Console.Write("-");
             }
@@ -187,35 +187,7 @@ namespace Assignment1_Dotnet_Hospital_Management_System
     
 
         }
-        //private void ShowDocTable(List<int> myDocList)
-        //{
-        //    Console.WriteLine($"{"Doctor ID",-10} | {"Doctor Name",-20} | {"Email",-25} | {"Phone",-20} | {"Address",-45} ");
-        //    for (int i = 0; i < 89; i++)
-        //    {
-        //        Console.Write("-");
-        //    }
-        //    Console.WriteLine("");
-        //    //-----------------------------------------------------------------------------------------------------
-
-
-        //    foreach (int id in myDocList) {
-        //        Console.Write("mydoclist: >>>  " + myDocList[id]);
-        //        Doctor d = DataManager.getDoctorInfo(id);
-        //        d.ToString();
-        //    }
-
-
-
-
-
-        //    for (int i = 0; i < 134; i++)
-        //    {
-        //        Console.Write("-");
-        //    }
-        //    //-----------------------------------------------------------------------------------------------------
-        //    Console.WriteLine("\n Press any key to continue...");
-        //}
-
+        
         private void BookMyAppointment()
         {
             int [] MyDoctors=DataManager.curentUser.RegisteredWith;
@@ -279,7 +251,7 @@ namespace Assignment1_Dotnet_Hospital_Management_System
 
         public override string ToString()
         {
-            return $"{ID,-10} | {Name,-20} | {Email,-25} | {Phone,-20} | {Address,-45} |";
+            return $"{ID,-10} | {Name,-20} | {Email,-25} | {Phone,-20} | {Address,-60}";
         }
     }
 }

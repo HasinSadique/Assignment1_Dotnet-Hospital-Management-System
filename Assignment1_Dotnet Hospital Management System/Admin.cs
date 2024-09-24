@@ -72,8 +72,8 @@ public class Admin : User
     static void DisplayUsersInTable(List<User> users)
     {
         //creates table for displaying doctors
-        Console.WriteLine($"{"ID",-10} | {"Name",-20} | {"Email",-25} | {"Phone", -20} | {"Address",-45} |");
-        for (int i = 0; i < 134; i++) {
+        Console.WriteLine($"{"ID",-10} | {"Name",-20} | {"Email",-25} | {"Phone", -20} | {"Address",-60}");
+        for (int i = 0; i < 149; i++) {
             Console.Write("-");
         }
         Console.WriteLine("");
@@ -84,7 +84,7 @@ public class Admin : User
             Console.WriteLine(user.ToString());
         }
 
-        for (int i = 0; i < 134; i++)
+        for (int i = 0; i < 149; i++)
         {
             Console.Write("-");
         }
@@ -95,15 +95,15 @@ public class Admin : User
     static void DisplayUserInTable(User user)
     {
         //creates table for displaying doctors
-        Console.WriteLine($"{"ID",-10} | {"Name",-20} | {"Email",-25} | {"Phone",-20} | {"Address",-45} |");
-        for (int i = 0; i < 137; i++)
+        Console.WriteLine($"{"ID",-10} | {"Name",-20} | {"Email",-25} | {"Phone",-20} | {"Address",-60}");
+        for (int i = 0; i < 142; i++)
         {
             Console.Write("-");
         }
         Console.WriteLine("");
         //-----------------------------------------------------------------------------------------------------
         Console.WriteLine(user.ToString());
-        for (int i = 0; i < 137; i++)
+        for (int i = 0; i < 142; i++)
         {
             Console.Write("-");
         }
