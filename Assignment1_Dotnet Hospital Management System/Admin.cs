@@ -180,7 +180,7 @@ public class Admin : User
 
         if (found == false)
         {
-            Console.WriteLine("No doctor found with this ID.\n Press any key to go to main menu.");
+            Console.WriteLine("No Patient found with this ID.\n Press any key to go to main menu.");
         }
     }
     private void AddDoctor()
@@ -188,6 +188,7 @@ public class Admin : User
         Console.Clear();
         Header h1 = new Header("Admin Home");
         Console.WriteLine("Registering new Doctor.\nSubmit the doctor details to complete registration.\n");
+
         Console.Write("First Name: ");
         string firstName =Console.ReadLine();
         Console.Write("Last Name: ");
@@ -265,6 +266,7 @@ public class Admin : User
         Console.Clear();
         Header h1 = new Header("Admin Home");
         Console.WriteLine("Registering new Patient.\nSubmit the Patient details to complete registration.\n");
+
         Console.Write("First Name: ");
         string firstName = Console.ReadLine();
         Console.Write("Last Name: ");
@@ -281,30 +283,43 @@ public class Admin : User
         string state = Console.ReadLine();
         Console.Write("Country: ");
         string country = Console.ReadLine();
-        Console.Write("set Password for this Doctor: ");
+        Console.Write("set Password for this Patient: ");
         string password = Console.ReadLine();
 
-        int id = getGeneratedID();
-        if (id > 0)
+        if (firstName.Length > 0 && lastName.Length > 0 && Email.Length > 0 && phone.Length > 0 && street.Length > 0 && state.Length > 0 && city.Length > 0 && state.Length > 0 && country.Length > 0 && password.Length > 0)
         {
-            //Console.WriteLine("\n\n "+firstName + " " + lastName + " registered as Doctor with \nID: " + id + " and pasword: " + password+"\n\n");
-            List<User> ListAllPatients = DataManager.LoadData("Patient");
-            Patient P1 = new Patient
-            {
-                ID = id,
-                Name = firstName + " " + lastName,
-                Email = Email,
-                Address = street + " " + city + " " + state + " " + country,
-                Phone = phone,
-                Password = password
-            };
 
-            ListAllPatients.Add(P1);
-            DataManager.SaveData("Patient", ListAllPatients);
+            int id = getGeneratedID();
+            if (id > 0)
+            {
+                //Console.WriteLine("\n\n "+firstName + " " + lastName + " registered as Doctor with \nID: " + id + " and pasword: " + password+"\n\n");
+                List<User> ListAllPatients = DataManager.LoadData("Patient");
+
+                Patient P1 = new Patient
+                {
+                    ID = id,
+                    Name = firstName + " " + lastName,
+                    Email = Email,
+                    Address = street + " " + city + " " + state + " " + country,
+                    Phone = phone,
+                    Password = password
+                };
+
+                ListAllPatients.Add(P1);
+                DataManager.SaveData("Patient", ListAllPatients);
+            }
+            else
+            {
+                Console.WriteLine("Error!! Could not generate ID.");
+            }
         }
-        else
-        {
-            Console.WriteLine();
+        else {
+            Console.WriteLine("Enter valid data in all fields for registration. Press any key.");
+            Console.ReadKey();
+            AddPatient();
         }
+
+
+        
     }
 }

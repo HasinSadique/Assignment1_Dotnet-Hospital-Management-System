@@ -17,7 +17,7 @@ public abstract class User
     [JsonPropertyName("Phone")]
     public string Phone { get; set; }
     [JsonPropertyName("RegisteredWith")]
-    public int [] RegisteredWith { get; set; }
+    public int[] RegisteredWith { get; set; } = [];
 
 
 

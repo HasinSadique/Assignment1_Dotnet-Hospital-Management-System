@@ -60,7 +60,7 @@ public class LoginPage
         {
             //throw new Exception();
             //Console.Clear();
-            Console.WriteLine($"Invalid input. press any key to try again!!\n {e}");
+            Console.WriteLine($"Invalid input. press any key to try again!!");
             Console.ReadKey();
             Console.Clear();
 

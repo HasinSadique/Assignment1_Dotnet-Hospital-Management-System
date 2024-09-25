@@ -136,41 +136,46 @@ namespace Assignment1_Dotnet_Hospital_Management_System
         {
             DataManager.reloadData();
             int[] MyPatientList = DataManager.curentUser.RegisteredWith;
+            if (MyPatientList == null) {
+                Console.WriteLine("No Patiesnt List Found!! \nPress any key to go back to main menu.");
 
-            //if there are Patients registered
-            if (MyPatientList.Length > 0)
-            {
-                Console.Clear();
-                Header h1 = new Header("Doctor Home");
-                Console.WriteLine("\nMy registered patients.\n");
-                Console.WriteLine($"\n{"Patient ID",-10} | {"Patient Name",-20} | {"Email",-25} | {"Phone",-20} | {"Address",-60} ");
-                for (int i = 0; i < 149; i++)
-                {
-                    Console.Write("-");
-                }
-                Console.WriteLine("");
-                //---------------------Data Below--------------------------------------------------------------------------------
-
-                for (int i = 0; i < MyPatientList.Length; i++)
-                {
-                    Patient p = DataManager.getPatientInfo(MyPatientList[i]);
-                    Console.WriteLine(p.ToString());
-                }
-                //---------------------Data above--------------------------------------------------------------------------------
-
-                for (int i = 0; i < 149; i++)
-                {
-                    Console.Write("-");
-                }
-                //-----------------------------------------------------------------------------------------------------
-                Console.WriteLine("\n Press any key to continue...");
             }
-            //If no doctor registered
-            else
-            {
-                Console.Clear();
-                Header h1 = new Header("Patient Home");
-                Console.WriteLine("You don't have any registered patients. Press any key to go back to main menu.");
+            else {
+                //if there are Patients registered
+                if (MyPatientList.Length > 0)
+                {
+                    Console.Clear();
+                    Header h1 = new Header("Doctor Home");
+                    Console.WriteLine("\nMy registered patients.\n");
+                    Console.WriteLine($"\n{"Patient ID",-10} | {"Patient Name",-20} | {"Email",-25} | {"Phone",-20} | {"Address",-60} ");
+                    for (int i = 0; i < 149; i++)
+                    {
+                        Console.Write("-");
+                    }
+                    Console.WriteLine("");
+                    //---------------------Data Below--------------------------------------------------------------------------------
+
+                    for (int i = 0; i < MyPatientList.Length; i++)
+                    {
+                        Patient p = DataManager.getPatientInfo(MyPatientList[i]);
+                        Console.WriteLine(p.ToString());
+                    }
+                    //---------------------Data above--------------------------------------------------------------------------------
+
+                    for (int i = 0; i < 149; i++)
+                    {
+                        Console.Write("-");
+                    }
+                    //-----------------------------------------------------------------------------------------------------
+                    Console.WriteLine("\n Press any key to continue...");
+                }
+                //If no doctor registered
+                else
+                {
+                    Console.Clear();
+                    Header h1 = new Header("Patient Home");
+                    Console.WriteLine("You don't have any registered patients. Press any key to go back to main menu.");
+                }
             }
         }
         

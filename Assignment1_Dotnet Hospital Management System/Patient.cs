@@ -66,7 +66,7 @@ namespace Assignment1_Dotnet_Hospital_Management_System
         {
             DataManager.reloadData();
             int [] MyDoctorList = DataManager.curentUser.RegisteredWith;
-
+            
 //if there are doctors registered
             if (MyDoctorList.Length > 0)
             {
