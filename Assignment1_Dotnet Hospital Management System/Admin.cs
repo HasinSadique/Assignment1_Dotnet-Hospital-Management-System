@@ -208,29 +208,39 @@ public class Admin : User
         Console.Write("set Password for this Doctor: ");
         string password = Console.ReadLine();
 
-
-        int id = getGeneratedID();
-        if (id > 0)
+        if (firstName.Length > 0 && lastName.Length > 0 && Email.Length > 0 && phone.Length > 0 && street.Length > 0 && state.Length > 0 && city.Length > 0 && state.Length > 0 && country.Length > 0 && password.Length > 0)
         {
-            //Console.WriteLine("\n\n "+firstName + " " + lastName + " registered as Doctor with \nID: " + id + " and pasword: " + password+"\n\n");
-            List<User> ListAllDoctors = DataManager.LoadData("Doctor");
-            Doctor d1 = new Doctor
+
+            int id = getGeneratedID();
+            if (id > 0)
             {
-                ID = id,
-                Name = firstName + " " + lastName,
-                Email = Email,
-                Address = street + " " + city + " " + state + " " + country,
-                Phone = phone,
-                Password = password
-            };
+                //Console.WriteLine("\n\n "+firstName + " " + lastName + " registered as Doctor with \nID: " + id + " and pasword: " + password+"\n\n");
+                List<User> ListAllDoctors = DataManager.LoadData("Doctor");
+                Doctor d1 = new Doctor
+                {
+                    ID = id,
+                    Name = firstName + " " + lastName,
+                    Email = Email,
+                    Address = street + " " + city + " " + state + " " + country,
+                    Phone = phone,
+                    Password = password
+                };
 
-            ListAllDoctors.Add(d1);
-            DataManager.SaveData("Doctor", ListAllDoctors);
+                ListAllDoctors.Add(d1);
+                DataManager.SaveData("Doctor", ListAllDoctors);
+            }
+            else
+            {
+                Console.WriteLine();
+            }
         }
-        else 
+        else
         {
-            Console.WriteLine();
+            Console.WriteLine("Enter valid data in all fields for registration. Press any key.");
+            Console.ReadKey();
+            AddDoctor();
         }
+
     }
 
     private int getGeneratedID()
@@ -317,9 +327,6 @@ public class Admin : User
             Console.WriteLine("Enter valid data in all fields for registration. Press any key.");
             Console.ReadKey();
             AddPatient();
-        }
-
-
-        
+        } 
     }
 }
